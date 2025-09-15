@@ -213,9 +213,7 @@ export const addTodoNote = (id: string, note: string) => {
 export const useStore = <T>(
   selector: (state: ReturnType<typeof todoStore.getState>) => T,
   equalityFn: (a: T, b: T) => boolean = deepEqual
-): T => {
-  const selectedState = selector(todoStore.getState());
-  
+): T => {  
   return useSyncExternalStore(
     (callback) => todoStore.subscribe(callback, selector, equalityFn),
     () => selector(todoStore.getState())

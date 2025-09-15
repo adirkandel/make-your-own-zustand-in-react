@@ -1,25 +1,11 @@
-import { useTodos, useFilter, useTodoActions } from '../lib/deep-compare-store';
-import TodoList from '../components/TodoList';
-import TodoForm from '../components/TodoForm';
-import TodoFilter from '../components/TodoFilter';
-import RenderCounter from '../components/RenderCounter';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/card';
-import { CodeBlock } from '../components/ui/code-block';
+import RenderCounter from '../../components/RenderCounter';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../components/ui/card';
+import { CodeBlock } from '../../components/ui/code-block';
+import StoreTodoFilter from './components/StoreTodoFilter';
+import StoreTodoForm from './components/StoreTodoForm';
+import StoreTodoList from './components/StoreTodoList';
 
 const DeepCompareDemo = () => {
-  const todos = useTodos();
-  const filter = useFilter();
-  const {
-    addTodo,
-    toggleTodo,
-    removeTodo,
-    setFilter,
-    updateTodoPriority,
-    addTodoTag,
-    removeTodoTag,
-    addTodoNote
-  } = useTodoActions();
-
   return (
     <div className="mx-auto">
       <Card className="mb-8">
@@ -82,18 +68,9 @@ const useStore = (selector, equalityFn = deepEqual) => {
             
             <div className="app-section">
               <RenderCounter componentName="TodoApp">
-                <TodoForm onAddTodo={addTodo} />
-                <TodoFilter filter={filter} onFilterChange={setFilter} />
-                <TodoList
-                  todos={todos}
-                  filter={filter}
-                  onToggle={toggleTodo}
-                  onRemove={removeTodo}
-                  onUpdatePriority={updateTodoPriority}
-                  onAddTag={addTodoTag}
-                  onRemoveTag={removeTodoTag}
-                  onAddNote={addTodoNote}
-                />
+                <StoreTodoForm />
+                <StoreTodoFilter />
+                <StoreTodoList />
               </RenderCounter>
             </div>
           </div>

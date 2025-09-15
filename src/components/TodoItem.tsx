@@ -43,7 +43,7 @@ const TodoItem = ({
 
   return (
     <RenderCounter componentName={`TodoItem: ${todo.text}`}>
-      <Card className="mb-4">
+      <Card>
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
             <Checkbox 

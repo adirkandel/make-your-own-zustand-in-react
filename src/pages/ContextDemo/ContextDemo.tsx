@@ -1,39 +1,17 @@
-import { TodoProvider, useTodos, useFilter, useTodoActions } from '../lib/context-store';
-import TodoList from '../components/TodoList';
-import TodoForm from '../components/TodoForm';
-import TodoFilter from '../components/TodoFilter';
-import RenderCounter from '../components/RenderCounter';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/card';
-import { CodeBlock } from '../components/ui/code-block';
+import { TodoProvider } from '../../lib/context-store';
+import RenderCounter from '../../components/RenderCounter';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../components/ui/card';
+import { CodeBlock } from '../../components/ui/code-block';
+import ContextTodoFilter from './components/ContextTodoFilter';
+import ContextTodoForm from './components/ContextTodoForm';
+import ContextTodoList from './components/ContextTodoList';
 
 const TodoApp = () => {
-  const todos = useTodos();
-  const filter = useFilter();
-  const {
-    addTodo,
-    toggleTodo,
-    removeTodo,
-    setFilter,
-    updateTodoPriority,
-    addTodoTag,
-    removeTodoTag,
-    addTodoNote
-  } = useTodoActions();
-
   return (
     <RenderCounter componentName="TodoApp">
-      <TodoForm onAddTodo={addTodo} />
-      <TodoFilter filter={filter} onFilterChange={setFilter} />
-      <TodoList
-        todos={todos}
-        filter={filter}
-        onToggle={toggleTodo}
-        onRemove={removeTodo}
-        onUpdatePriority={updateTodoPriority}
-        onAddTag={addTodoTag}
-        onRemoveTag={removeTodoTag}
-        onAddNote={addTodoNote}
-      />
+      <ContextTodoForm />
+      <ContextTodoFilter />
+      <ContextTodoList />
     </RenderCounter>
   );
 };

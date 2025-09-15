@@ -96,10 +96,6 @@
   overflow-x: auto;
 }
 
-.todo-list {
-  margin-top: 20px;
-}
-
 .todo-item {
   display: flex;
   align-items: center;

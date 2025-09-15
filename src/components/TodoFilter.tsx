@@ -1,15 +1,15 @@
 import RenderCounter from './RenderCounter';
 import { Button } from './ui/button';
 
-interface TodoFilterProps {
+export interface TodoFilterProps {
   filter: 'all' | 'active' | 'completed';
   onFilterChange: (filter: 'all' | 'active' | 'completed') => void;
 }
 
 const TodoFilter = ({ filter, onFilterChange }: TodoFilterProps) => {
   return (
-    <RenderCounter componentName="TodoFilter">
-      <div className="flex space-x-2 my-4">
+    <RenderCounter componentName="TodoFilter" orientation="horizontal">
+      <div className="flex space-x-2">
         <Button
           variant={filter === 'all' ? 'default' : 'outline'}
           onClick={() => onFilterChange('all')}

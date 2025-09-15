@@ -20,9 +20,9 @@ const TodoForm = ({ onAddTodo }: TodoFormProps) => {
   };
 
   return (
-    <RenderCounter componentName="TodoForm">
-      <Card>
-        <CardContent className="pt-6">
+    <RenderCounter componentName="TodoForm" orientation="horizontal">
+      <Card className="border-0 shadow-none">
+        <CardContent className="p-0">
           <form onSubmit={handleSubmit} className="flex space-x-2">
             <Input
               type="text"

@@ -1,9 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router-dom'
 import './App.css'
-import ContextDemo from './pages/ContextDemo'
-import BasicSyncStoreDemo from './pages/BasicSyncStoreDemo'
-import ShallowCompareDemo from './pages/ShallowCompareDemo'
-import DeepCompareDemo from './pages/DeepCompareDemo'
+import ContextDemo from './pages/ContextDemo/ContextDemo'
+import { BasicSyncStoreDemo, ShallowCompareDemo, DeepCompareDemo } from './pages/SyncStoreDemo'
 
 function App() {
   return (
