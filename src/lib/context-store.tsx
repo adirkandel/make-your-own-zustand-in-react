@@ -117,16 +117,11 @@ export function useStore<T>(
 
   const [state, setState] = useState(() => selector(store.getState()));
 
-  const selectorRef = useRef(selector);
-  useEffect(() => {
-    selectorRef.current = selector;
-  }, [selector]);
-
   const snapshotCache = useRef<T | undefined>(undefined);
 
   useEffect(() => {
     const unsubscribe = store.subscribe(() => {
-      const nextSnapshot = selectorRef.current(todoStore.getState());
+      const nextSnapshot = selector(todoStore.getState());
       if (
         snapshotCache.current &&
         (equalityFn?.(nextSnapshot, snapshotCache.current) ||
@@ -141,7 +136,7 @@ export function useStore<T>(
     return () => {
       unsubscribe();
     };
-  }, [store, equalityFn]);
+  }, [store, selector, equalityFn]);
 
   return state;
 }
