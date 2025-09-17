@@ -1,1 +1,1 @@
-export { default as BasicSyncStoreDemo } from './BasicSyncStoreDemo';
+export { default as BasicSyncStoreDemo } from "./BasicSyncStoreDemo";

@@ -1,17 +1,15 @@
-import { memo } from 'react';
-import StoreTodoItem from './StoreTodoItem';
-import { useFilter, useStore } from '../../../lib/sync-store';
-import TodoList from '../../../components/TodoList';
+import { memo } from "react";
+import StoreTodoItem from "./StoreTodoItem";
+import { useFilter, useStore } from "../../../lib/sync-store";
+import TodoList from "../../../components/TodoList";
 
 const StoreTodoList = () => {
-    const todos = useStore(
-      state =>
-        state.todos.sort(todo => todo.isFavorite ? -1 : 1));
-    const filter = useFilter();
+  const todos = useStore(state => state.todos.sort(todo => (todo.isFavorite ? -1 : 1)));
+  const filter = useFilter();
 
   return (
     <TodoList todos={todos} filter={filter}>
-        {(todo) => <StoreTodoItem key={todo.id} todo={todo} />}
+      {todo => <StoreTodoItem key={todo.id} todo={todo} />}
     </TodoList>
   );
 };

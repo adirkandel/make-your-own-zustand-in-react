@@ -10,8 +10,7 @@ export const shallowEqual = (objA: any, objB: any): boolean => {
     return true;
   }
 
-  if (typeof objA !== 'object' || objA === null || 
-      typeof objB !== 'object' || objB === null) {
+  if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
     return false;
   }
 
@@ -24,8 +23,7 @@ export const shallowEqual = (objA: any, objB: any): boolean => {
 
   for (let i = 0; i < keysA.length; i++) {
     const key = keysA[i];
-    if (!Object.prototype.hasOwnProperty.call(objB, key) || 
-        objA[key] !== objB[key]) {
+    if (!Object.prototype.hasOwnProperty.call(objB, key) || objA[key] !== objB[key]) {
       return false;
     }
   }
@@ -38,8 +36,7 @@ export const deepEqual = (objA: any, objB: any): boolean => {
     return true;
   }
 
-  if (typeof objA !== 'object' || objA === null || 
-      typeof objB !== 'object' || objB === null) {
+  if (typeof objA !== "object" || objA === null || typeof objB !== "object" || objB === null) {
     return false;
   }
 
@@ -55,7 +52,7 @@ export const deepEqual = (objA: any, objB: any): boolean => {
       return false;
     }
 
-    if (typeof objA[key] === 'object' && objA[key] !== null) {
+    if (typeof objA[key] === "object" && objA[key] !== null) {
       if (!deepEqual(objA[key], objB[key])) {
         return false;
       }
@@ -69,9 +66,8 @@ export const deepEqual = (objA: any, objB: any): boolean => {
 
 export const createStore = <T extends Record<string, any>>(initialState: T) => {
   let state = initialState;
-  
+
   const listeners = new Set<() => void>();
-  
 
   const subscribe = (listener: () => void) => {
     listeners.add(listener);
@@ -81,19 +77,19 @@ export const createStore = <T extends Record<string, any>>(initialState: T) => {
   const getState = () => state;
 
   const setState = (partial: Partial<T> | ((state: T) => Partial<T>)) => {
-    const nextPartial = typeof partial === 'function' ? partial(state) : partial;
-    
+    const nextPartial = typeof partial === "function" ? partial(state) : partial;
+
     // Only update if there are changes
     if (!Object.keys(nextPartial).length) return;
-    
+
     state = { ...state, ...nextPartial };
-    
+
     listeners.forEach(listener => listener());
   };
-  
+
   return {
     getState,
     setState,
-    subscribe
+    subscribe,
   };
 };

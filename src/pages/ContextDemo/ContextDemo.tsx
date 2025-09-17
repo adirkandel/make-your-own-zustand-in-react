@@ -1,10 +1,10 @@
-import { TodoProvider } from '../../lib/context-store';
-import RenderCounter from '../../components/RenderCounter';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../../components/ui/card';
-import ContextTodoFilter from './components/ContextTodoFilter';
-import ContextTodoForm from './components/ContextTodoForm';
-import ContextTodoList from './components/ContextTodoList';
-import ContextTodoFavSelect from './components/ContextTodoFavSelect';
+import { TodoProvider } from "../../lib/context-store";
+import RenderCounter from "../../components/RenderCounter";
+import { Card, CardHeader, CardTitle, CardContent } from "../../components/ui/card";
+import ContextTodoFilter from "./components/ContextTodoFilter";
+import ContextTodoForm from "./components/ContextTodoForm";
+import ContextTodoList from "./components/ContextTodoList";
+import ContextTodoFavSelect from "./components/ContextTodoFavSelect";
 
 const ContextDemo = () => {
   return (
@@ -19,9 +19,9 @@ const ContextDemo = () => {
               <RenderCounter componentName="TodoApp">
                 <div className="flex gap-6">
                   <div>
-                      <ContextTodoForm />
-                      <ContextTodoFavSelect />
-                      <ContextTodoFilter />
+                    <ContextTodoForm />
+                    <ContextTodoFavSelect />
+                    <ContextTodoFilter />
                   </div>
                   <div>
                     <ContextTodoList />
