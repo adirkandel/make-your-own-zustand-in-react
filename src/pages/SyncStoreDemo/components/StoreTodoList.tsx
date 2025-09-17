@@ -1,10 +1,12 @@
 import { memo } from 'react';
 import StoreTodoItem from './StoreTodoItem';
-import { useFilter, useTodos } from '../../../lib/basic-sync-store';
+import { useFilter, useStore } from '../../../lib/sync-store';
 import TodoList from '../../../components/TodoList';
 
 const StoreTodoList = () => {
-    const todos = useTodos();
+    const todos = useStore(
+      state =>
+        state.todos.sort(todo => todo.isFavorite ? -1 : 1));
     const filter = useFilter();
 
   return (

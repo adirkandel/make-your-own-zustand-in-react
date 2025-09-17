@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Todo } from '../../../lib/types';
 import TodoItem from '../../../components/TodoItem';
-import { useTodoActions } from '../../../lib/basic-sync-store';
+import { useTodoActions } from '../../../lib/sync-store';
 
 const StoreTodoItem = ({ todo }: { todo: Todo }) => {
   const {

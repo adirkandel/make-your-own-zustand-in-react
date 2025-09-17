@@ -1,5 +1,5 @@
 import TodoForm from '../../../components/TodoForm';
-import { useTodoActions } from '../../../lib/basic-sync-store';
+import { useTodoActions } from '../../../lib/sync-store';
 
 const StoreTodoForm = () => {
   const { addTodo } = useTodoActions();

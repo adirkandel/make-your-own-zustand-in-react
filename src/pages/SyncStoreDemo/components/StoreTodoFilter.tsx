@@ -1,5 +1,5 @@
 import TodoFilter from '../../../components/TodoFilter';
-import { useFilter, useTodoActions } from '../../../lib/basic-sync-store';
+import { useFilter, useTodoActions } from '../../../lib/sync-store';
 
 const StoreTodoFilter = () => {
   const { setFilter } = useTodoActions();

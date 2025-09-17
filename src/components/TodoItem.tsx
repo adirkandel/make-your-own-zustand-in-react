@@ -5,8 +5,8 @@ import { Checkbox } from './ui/checkbox';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { Select } from './ui/select';
-import { X } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { X, Star } from 'lucide-react';
 
 interface TodoItemProps {
   todo: Todo;
@@ -55,9 +55,12 @@ const TodoItem = ({
                 {todo.text}
               </span>
 
-              <Badge variant={todo.metadata.priority === 'high' ? 'destructive' : todo.metadata.priority === 'medium' ? 'secondary' : 'default'}>
-                {todo.metadata.priority}
-              </Badge>
+              <div className='flex gap-2'>
+                {todo.isFavorite ? <Star /> : null}
+                <Badge variant={todo.metadata.priority === 'high' ? 'destructive' : todo.metadata.priority === 'medium' ? 'secondary' : 'default'}>
+                  {todo.metadata.priority}
+                </Badge>
+              </div>
             </div>
           </div>
           
@@ -86,14 +89,15 @@ const TodoItem = ({
           </div>
 
           <div className="flex items-center gap-2 mt-3">
-            <Select
-              value={todo.metadata.priority}
-              onChange={(e) => onUpdatePriority(todo.id, e.target.value as 'low' | 'medium' | 'high')}
-              className="h-7 w-24"
-            >
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+            <Select onValueChange={(value: 'low' | 'medium' | 'high') => onUpdatePriority(todo.id, value)} defaultValue={todo.metadata.priority}>
+              <SelectTrigger className="!h-7">
+                <SelectValue placeholder="Select a verified email to display" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
+              </SelectContent>
             </Select>
             <Button variant="outline" size="sm" onClick={handleAddTag}>
               Add Tag

@@ -1,41 +1,9 @@
-import { useSyncExternalStore } from 'react';
+import { useRef, useSyncExternalStore } from 'react';
 import { Todo, TodoStore, initialTodos, generateId } from './types';
-
-// Create a store with the useSyncExternalStore pattern
-const createStore = <T extends Record<string, any>>(initialState: T) => {
-  // Store state
-  let state = initialState;
-  
-  // Set of listeners
-  const listeners = new Set<() => void>();
-  
-  // Subscribe function
-  const subscribe = (listener: () => void) => {
-    listeners.add(listener);
-    return () => listeners.delete(listener);
-  };
-  
-  // Get state function
-  const getState = () => state;
-  
-  // Set state function
-  const setState = (nextState: T) => {
-    state = nextState;
-    listeners.forEach(listener => listener());
-  };
-  
-  return {
-    getState,
-    setState,
-    subscribe
-  };
-};
+import { createStore } from './utils';
 
 // Create our todo store
-const todoStore = createStore<{
-  todos: Todo[];
-  filter: 'all' | 'active' | 'completed';
-}>({
+const todoStore = createStore<Pick<TodoStore, 'todos' | 'filter'>>({
   todos: initialTodos,
   filter: 'all'
 });
@@ -48,6 +16,7 @@ export const addTodo = (text: string) => {
     text,
     completed: false,
     tags: [],
+    isFavorite: false,
     metadata: {
       createdAt: new Date().toISOString(),
       priority: 'medium'
@@ -57,6 +26,14 @@ export const addTodo = (text: string) => {
   todoStore.setState({
     ...state,
     todos: [...state.todos, newTodo]
+  });
+};
+
+export const markAsFavorite = (id: string) => {
+  const state = todoStore.getState();
+  todoStore.setState({
+    ...state,
+    todos: state.todos.map(todo => todo.id === id ? { ...todo, isFavorite: !todo.isFavorite } : todo)
   });
 };
 
@@ -147,19 +124,30 @@ export const addTodoNote = (id: string, note: string) => {
 };
 
 // Custom hooks for using the store
-export const useStore = <T>(selector: (state: ReturnType<typeof todoStore.getState>) => T) => {
+export const useStore = <T>(
+  selector: (state: Pick<TodoStore, 'todos' | 'filter'>) => T,
+  equalityFn?: (a: T, b: T) => boolean
+): T => {
+  const snapshotCache = useRef<T | undefined>(undefined);
   return useSyncExternalStore(
     todoStore.subscribe,
-    () => selector(todoStore.getState())
+    () => {
+      const nextSnapshot = selector(todoStore.getState());
+      if (snapshotCache.current && (equalityFn?.(nextSnapshot, snapshotCache.current) || nextSnapshot === snapshotCache.current)) {
+        return snapshotCache.current;
+      }
+      snapshotCache.current = nextSnapshot;
+      return nextSnapshot;
+    },
   );
 };
 
 // Specific selectors
-export const useTodos = () => useStore(state => state.todos);
 export const useFilter = () => useStore(state => state.filter);
 export const useTodoActions = (): Omit<TodoStore, 'todos' | 'filter'> => {
   return {
     addTodo,
+    markAsFavorite,
     toggleTodo,
     removeTodo,
     setFilter,

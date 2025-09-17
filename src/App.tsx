@@ -1,7 +1,7 @@
 import { Routes, Route, NavLink } from 'react-router-dom'
 import './App.css'
 import ContextDemo from './pages/ContextDemo/ContextDemo'
-import { BasicSyncStoreDemo, ShallowCompareDemo, DeepCompareDemo } from './pages/SyncStoreDemo'
+import { BasicSyncStoreDemo } from './pages/SyncStoreDemo'
 
 function App() {
   return (
@@ -20,16 +20,6 @@ function App() {
                 Basic useSyncExternalStore
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/shallow-compare" className={({ isActive }) => isActive ? 'active' : ''}>
-                Shallow Comparison
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/deep-compare" className={({ isActive }) => isActive ? 'active' : ''}>
-                Deep Comparison
-              </NavLink>
-            </li>
           </ul>
         </nav>
       </header>
@@ -37,8 +27,6 @@ function App() {
         <Routes>
           <Route path="/" element={<ContextDemo />} />
           <Route path="/basic-sync-store" element={<BasicSyncStoreDemo />} />
-          <Route path="/shallow-compare" element={<ShallowCompareDemo />} />
-          <Route path="/deep-compare" element={<DeepCompareDemo />} />
         </Routes>
       </main>
     </div>
