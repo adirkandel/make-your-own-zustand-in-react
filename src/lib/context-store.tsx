@@ -48,7 +48,7 @@ const removeTodo = (id: string) => {
 };
 
 const setFilter = (filter: "all" | "active" | "completed") => {
-  todoStore.setState({ filter });
+  todoStore.setState(state => ({ ...state, filter }));
 };
 
 const updateTodoPriority = (id: string, priority: "low" | "medium" | "high") => {

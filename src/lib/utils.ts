@@ -76,8 +76,8 @@ export const createStore = <T extends Record<string, any>>(initialState: T) => {
 
   const getState = () => state;
 
-  const setState = (partial: Partial<T> | ((state: T) => Partial<T>)) => {
-    const nextPartial = typeof partial === "function" ? partial(state) : partial;
+  const setState = (partial: ((state: T) => Partial<T>)) => {
+    const nextPartial = partial(state);
 
     // Only update if there are changes
     if (!Object.keys(nextPartial).length) return;

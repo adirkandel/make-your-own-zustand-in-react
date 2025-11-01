@@ -4,23 +4,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 
 type TodoFavSelectProps = {
   handleSubmit: (todoId: string) => void;
-  todos: string[];
-  // todos: { id: string; text: string }[];
+  todos: { id: string; text: string }[];
 };
 
-const TodoFavSelect = ({ handleSubmit, todos: todosNames }: TodoFavSelectProps) => {
+const TodoFavSelect = ({ handleSubmit, todos }: TodoFavSelectProps) => {
   return (
     <RenderCounter componentName="TodoFavSelect" orientation="horizontal">
       <Card className="border-0 shadow-none">
         <CardContent className="p-0">
-          <Select onValueChange={handleSubmit} defaultValue={todosNames?.[0]}>
+          <Select onValueChange={handleSubmit} defaultValue={todos?.[0]?.id}>
             <SelectTrigger>
               <SelectValue placeholder="Select favorite todo" />
             </SelectTrigger>
             <SelectContent>
-              {todosNames?.map(todo => (
-                <SelectItem key={todo} value={todo}>
-                  {todo}
+              {todos?.map(todo => (
+                <SelectItem key={todo.id} value={todo.id}>
+                  {todo.text}
                 </SelectItem>
               ))}
             </SelectContent>

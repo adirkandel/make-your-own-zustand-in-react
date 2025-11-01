@@ -10,7 +10,6 @@ const todoStore = createStore<Pick<TodoStore, "todos" | "filter">>({
 
 // Store actions
 export const addTodo = (text: string) => {
-  const state = todoStore.getState();
   const newTodo: Todo = {
     id: generateId(),
     text,
@@ -23,51 +22,46 @@ export const addTodo = (text: string) => {
     },
   };
 
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: [...state.todos, newTodo],
-  });
+  }));
 };
 
 export const markAsFavorite = (id: string) => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: state.todos.map(todo =>
       todo.id === id ? { ...todo, isFavorite: !todo.isFavorite } : todo
     ),
-  });
+  }));
 };
 
 export const toggleTodo = (id: string) => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: state.todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ),
-  });
+  }));
 };
 
 export const removeTodo = (id: string) => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: state.todos.filter(todo => todo.id !== id),
-  });
+  }));
 };
 
 export const setFilter = (filter: "all" | "active" | "completed") => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     filter,
-  });
+  }));
 };
 
 export const updateTodoPriority = (id: string, priority: "low" | "medium" | "high") => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: state.todos.map(todo =>
       todo.id === id
@@ -80,32 +74,28 @@ export const updateTodoPriority = (id: string, priority: "low" | "medium" | "hig
           }
         : todo
     ),
-  });
+  }));
 };
 
 export const addTodoTag = (id: string, tag: string) => {
-  const state = todoStore.getState();
-  todoStore.setState({
-    ...state,
+  todoStore.setState(state => ({
     todos: state.todos.map(todo =>
       todo.id === id && !todo.tags.includes(tag) ? { ...todo, tags: [...todo.tags, tag] } : todo
     ),
-  });
+  }));
 };
 
 export const removeTodoTag = (id: string, tag: string) => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: state.todos.map(todo =>
       todo.id === id ? { ...todo, tags: todo.tags.filter(t => t !== tag) } : todo
     ),
-  });
+  }));
 };
 
 export const addTodoNote = (id: string, note: string) => {
-  const state = todoStore.getState();
-  todoStore.setState({
+  todoStore.setState(state => ({
     ...state,
     todos: state.todos.map(todo =>
       todo.id === id
@@ -118,7 +108,7 @@ export const addTodoNote = (id: string, note: string) => {
           }
         : todo
     ),
-  });
+  }));
 };
 
 // Custom hooks for using the store
