@@ -4,6 +4,7 @@ import StoreTodoFilter from "./components/StoreTodoFilter";
 import StoreTodoForm from "./components/StoreTodoForm";
 import StoreTodoList from "./components/StoreTodoList";
 import StoreTodoFavSelect from "./components/StoreTodoFavSelect";
+import StoreFavoritesList from "./components/StoreFavoritesList";
 
 const BasicSyncStoreDemo = () => {
   return (
@@ -18,8 +19,9 @@ const BasicSyncStoreDemo = () => {
               <div className="flex gap-6">
                 <div>
                   <StoreTodoForm />
-                  <StoreTodoFavSelect />
                   <StoreTodoFilter />
+                  <StoreTodoFavSelect />
+                  <StoreFavoritesList />
                 </div>
                 <div>
                   <StoreTodoList />

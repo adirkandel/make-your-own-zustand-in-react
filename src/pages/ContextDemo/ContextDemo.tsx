@@ -5,6 +5,7 @@ import ContextTodoFilter from "./components/ContextTodoFilter";
 import ContextTodoForm from "./components/ContextTodoForm";
 import ContextTodoList from "./components/ContextTodoList";
 import ContextTodoFavSelect from "./components/ContextTodoFavSelect";
+import ContextFavoritesList from "./components/ContextFavoritesList";
 
 const ContextDemo = () => {
   return (
@@ -20,8 +21,9 @@ const ContextDemo = () => {
                 <div className="flex gap-6">
                   <div>
                     <ContextTodoForm />
-                    <ContextTodoFavSelect />
                     <ContextTodoFilter />
+                    <ContextTodoFavSelect />
+                    <ContextFavoritesList />
                   </div>
                   <div>
                     <ContextTodoList />
