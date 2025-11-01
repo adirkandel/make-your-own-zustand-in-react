@@ -43,10 +43,10 @@ const TodoItem = ({
 
   return (
     <RenderCounter componentName={`TodoItem: ${todo.text}`}>
-      <Card>
+      <Card className="p-0">
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
-            <Checkbox checked={todo.completed} onChange={() => onToggle(todo.id)} />
+            <Checkbox checked={todo.completed} onClick={() => onToggle(todo.id)} />
             <div className="flex-1 flex justify-between">
               <span className={todo.completed ? "line-through text-gray-500" : ""}>
                 {todo.text}

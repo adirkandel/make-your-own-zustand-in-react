@@ -8,7 +8,7 @@ type FavoritesListProps = {
 const FavoritesList = ({ favorites }: FavoritesListProps) => {
   return (
     <RenderCounter componentName="FavoritesList" orientation="horizontal">
-      <Card className="border-0 shadow-none">
+      <Card className="border-0 shadow-none p-0">
         <CardHeader>
           <CardTitle className="text-lg">Favorites</CardTitle>
         </CardHeader>
