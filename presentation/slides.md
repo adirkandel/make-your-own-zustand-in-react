@@ -1,5 +1,5 @@
 ---
-theme: default
+theme: ./theme
 highlighter: shiki
 lineNumbers: false
 info: |
@@ -112,5 +112,5 @@ src: ./slides/key-takeaways.md
 ---
 
 ---
-src: ./slides/resources-thank-you.md
+src: ./slides/conclusion.md
 ---
