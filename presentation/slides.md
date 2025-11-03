@@ -56,10 +56,6 @@ src: ./slides/hook-flow-diagram.md
 ---
 
 ---
-src: ./slides/solution-1-summary.md
----
-
----
 src: ./slides/introducing-syncstore.md
 ---
 
@@ -72,19 +68,7 @@ src: ./slides/rebuilding-store.md
 ---
 
 ---
-src: ./slides/the-magic-hook.md
----
-
----
-src: ./slides/no-provider-needed.md
----
-
----
-src: ./slides/syncstore-benefits.md
----
-
----
-src: ./slides/pattern-evolution.md
+src: ./slides/the-comparison.md
 ---
 
 ---
@@ -92,23 +76,7 @@ src: ./slides/side-by-side-comparison.md
 ---
 
 ---
-src: ./slides/code-complexity.md
----
-
----
-src: ./slides/performance-notes.md
----
-
----
 src: ./slides/universal-pattern.md
----
-
----
-src: ./slides/when-to-use.md
----
-
----
-src: ./slides/key-takeaways.md
 ---
 
 ---

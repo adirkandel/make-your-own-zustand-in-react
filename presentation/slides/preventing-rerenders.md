@@ -4,9 +4,13 @@ layout: default
 
 # Preventing Re-renders - The Key! 🔑
 
-<div class="text-left mt-4">
+<div class="flex gap-5 mt-5">
+
+<div>
 
 ## The Magic: Ref Comparison
+
+<div class="mt-4">
 
 ```typescript {120-139:src/lib/context-store.tsx}
   const snapshotCache = useRef<T | undefined>(undefined);
@@ -25,15 +29,19 @@ layout: default
       return setState(nextSnapshot);
     });
 
-    return () => {
-      unsubscribe();
-    };
+    return () => { unsubscribe(); };
   }, [store, selector, equalityFn]);
 
   return state;
 ```
 
-<div v-click class="mt-6">
+</div>
+
+</div>
+
+<div>
+
+<div v-click>
 
 ## How It Works
 
@@ -46,6 +54,8 @@ layout: default
 <div v-click class="mt-8 text-xl font-bold text-green-400">
 
 ✅ This is how we overcome Context's re-render issue!
+
+</div>
 
 </div>
 

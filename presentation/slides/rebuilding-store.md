@@ -20,8 +20,6 @@ const todoStore = createStore<Pick<TodoStore, "todos" | "filter">>({
 
 ## Same `createStore` Function
 
-We use the exact same `createStore` from `utils.ts`!
-
 </div>
 
 <div v-click class="mt-6">

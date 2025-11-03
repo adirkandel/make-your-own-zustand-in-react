@@ -5,20 +5,17 @@ layout: section
 # Solution 1: Context Approach
 
 ---
+layout: two-cols
+---
 
 # The Pub/Sub Pattern
 
-<div class="text-left mt-8">
+<div class="mt-5">
 
 ## Core Concept
 
-<div v-click>
-
 **Publisher** → Notifies → **Subscribers**
 
-</div>
-
-<div v-click class="mt-6">
 
 ```typescript
 // Store has a set of listeners
@@ -37,13 +34,13 @@ const unsubscribe = store.subscribe(() => {
 
 </div>
 
-<div v-click class="mt-8">
+::right::
 
-## Key Insight
+<div v-click class="mt-5">
+
+## Key Insight 💡
 
 We can build a store **outside React**, then connect it via Context
-
-</div>
 
 </div>
 

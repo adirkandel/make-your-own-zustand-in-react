@@ -8,6 +8,12 @@ class: text-center
 
 <div class="abs-bl m-6 text-left">
   <h1 class="!text-5xl font-bold text-white drop-shadow-lg">
-    How to build our own Zustand?
+    How to craft our own Zustand store?
   </h1>
 </div>
+
+---
+layout: statement
+---
+
+# How do you manage your state?

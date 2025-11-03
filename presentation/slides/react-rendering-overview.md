@@ -1,14 +1,14 @@
 ---
-layout: default
+layout: default-new
 ---
 
 # React Rendering Behavior
 
-<div class="text-left mt-8">
+<div class="mt-5">
 
-## When Components Re-render
+## When do components get re-rendered?
 
-<div v-click>
+<div v-click class="mt-4">
 
 - Props change
 - State changes (`useState`, `useReducer`)
@@ -17,7 +17,7 @@ layout: default
 
 </div>
 
-<div v-click class="mt-8">
+<div v-click class="mt-5">
 
 ## What We Need
 
@@ -25,7 +25,7 @@ Re-render **ONLY** when the selected slice of state changes
 
 </div>
 
-<div v-click class="mt-8">
+<div v-click class="mt-5">
 
 ## The Challenge
 

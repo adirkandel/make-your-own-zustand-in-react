@@ -4,14 +4,13 @@ layout: default
 
 # Building the Store
 
-<div class="text-left mt-4">
+<div class="mt-4 flex gap-5">
 
-## The Store Pattern
+<div>
 
 ```typescript {67-95:src/lib/utils.ts}
-export const createStore = <T extends Record<string, any>>(initialState: T) => {
+export const createStore = <T>(initialState: T) => {
   let state = initialState;
-
   const listeners = new Set<() => void>();
 
   const subscribe = (listener: () => void) => {
@@ -32,15 +31,13 @@ export const createStore = <T extends Record<string, any>>(initialState: T) => {
     listeners.forEach(listener => listener());
   };
 
-  return {
-    getState,
-    setState,
-    subscribe,
-  };
+  return { getState, setState, subscribe };
 };
 ```
 
-<div v-click class="mt-6">
+</div>
+
+<div v-click>
 
 ## Three Key Functions
 

@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: default-new
 ---
 
 # The State Management Challenge
 
-<div class="text-left mt-8">
+<div class="mt-5">
 
 ## What We Want
 
@@ -12,7 +12,7 @@ layout: default
 - **Selective subscriptions** - only re-render when your slice changes
 - Simple API - no boilerplate
 
-<div v-click class="mt-8">
+<div v-click class="mt-5">
 
 ## The Dream API
 
@@ -22,14 +22,6 @@ const filter = useStore(state => state.filter);
 
 // Only re-renders when todos change, not when filter changes!
 ```
-
-</div>
-
-<div v-click class="mt-8">
-
-## What We're Building
-
-A Todo app demonstrating selective re-renders
 
 </div>
 

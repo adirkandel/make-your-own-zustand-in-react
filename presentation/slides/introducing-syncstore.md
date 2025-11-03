@@ -5,10 +5,12 @@ layout: section
 # Evolution: useSyncExternalStore
 
 ---
+layout: default-new
+---
 
 # Enter useSyncExternalStore
 
-<div class="text-left mt-8">
+<div class="mt-5">
 
 <div v-click>
 
@@ -31,12 +33,6 @@ Connect React components to external data sources (Redux, Zustand, custom stores
 ## Key Insight 💡
 
 This is **exactly** what we built manually! React now provides it built-in.
-
-</div>
-
-<div v-click class="mt-8 text-xl font-bold text-blue-400">
-
-React handles all the complexity we did manually!
 
 </div>
 

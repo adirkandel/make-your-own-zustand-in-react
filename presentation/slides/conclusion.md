@@ -1,4 +1,14 @@
 ---
+layout: section
+class: text-center
+---
+
+# Demo time!
+
+<img src="/assets/dancing-pumpkin-head.gif" />
+
+
+---
 layout: center-new
 class: text-center
 ---

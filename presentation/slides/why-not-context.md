@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: two-cols
 ---
 
 # Why Not Just Context?
 
-<div class="text-left mt-8">
+<div class="mt-5">
 
 ## The Naive Approach
 
@@ -20,8 +20,6 @@ const useStore = () => useContext(TodoContext);
 
 Changing **ANY** state → Re-renders **ALL** consumers
 
-</div>
-
 <div v-click class="mt-6">
 
 ```tsx
@@ -36,13 +34,18 @@ const filter = useStore(); // Gets all state
 
 </div>
 
-<div v-click class="mt-6">
-
-## Key Insight 💡
-
-Context alone doesn't give us selective subscriptions - we need manual comparison logic!
+</div>
 
 </div>
 
+::right::
+
+<div v-click class="mt-18">
+
+## Key Insight 💡
+
+<p class="!my-1">
+Context alone doesn't give us selective subscriptions - we need manual comparison logic!
+</p>
 </div>
 

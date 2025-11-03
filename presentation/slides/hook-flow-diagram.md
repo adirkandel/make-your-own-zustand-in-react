@@ -1,11 +1,12 @@
 ---
-layout: center
-class: text-center
+layout: default
 ---
 
 # How It Works - The Flow
 
-<div class="mt-8 text-left">
+<div class="flex gap-5">
+
+<div class="mt-4">
 
 <div v-click>
 
@@ -57,3 +58,20 @@ class: text-center
 
 </div>
 
+<div v-click class="mt-4">
+
+## Complexity
+
+~35 lines of hook code
+
+<div class="mt-4">
+
+## Key Point 💡
+
+Context **CAN** work, but requires manual optimization!
+
+</div>
+
+</div>
+
+</div>

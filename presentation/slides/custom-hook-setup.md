@@ -1,12 +1,16 @@
 ---
-layout: default
+layout: default-new
 ---
 
 # The Custom Hook - Initial Setup
 
-<div class="text-left mt-4">
+<div class="mt-4 flex gap-5">
+
+<div>
 
 ## Getting the Store from Context
+
+<div class="mt-4">
 
 ```typescript {108-118:src/lib/context-store.tsx}
 export function useStore<T>(
@@ -22,7 +26,13 @@ export function useStore<T>(
   const [state, setState] = useState(() => selector(store.getState()));
 ```
 
-<div v-click class="mt-6">
+</div>
+
+</div>
+
+<div>
+
+<div v-click>
 
 ## What We Have So Far
 
@@ -32,13 +42,13 @@ export function useStore<T>(
 
 </div>
 
-<div v-click class="mt-6">
-
-## But... How do we update when store changes?
-
-We need to **subscribe** to store updates!
+</div>
 
 </div>
+
+<div v-click class="mt-16">
+
+# But... How do we update when store changes?
 
 </div>
 

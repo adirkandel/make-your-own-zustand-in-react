@@ -1,14 +1,23 @@
 ---
+layout: section
+class: text-center
+---
+
+# The Comparison
+
+---
 layout: two-cols
 ---
 
-# The Magic Hook
+<div class="mb-1">
 
-## Context Approach
+## Context ~35 lines
 
-```typescript {108-142:src/lib/context-store.tsx}
+</div>
+
+```typescript {all|5-8|9|11|12|24|all}
 export function useStore<T>(
-  selector: (state: Pick<TodoStore, "todos" | "filter">) => T,
+  selector: (state: object) => T,
   equalityFn?: (a: T, b: T) => boolean
 ): T {
   const store = useContext(StoreContext);
@@ -38,13 +47,13 @@ export function useStore<T>(
 }
 ```
 
-<div class="text-xl font-bold mt-4">
-~35 lines
-</div>
-
 ::right::
 
-## useSyncExternalStore Approach
+<div class="mb-1">
+
+## useSyncExternalStore ~17 lines
+
+</div>
 
 ```typescript {115-131:src/lib/sync-store.ts}
 export const useStore = <T>(
@@ -56,8 +65,7 @@ export const useStore = <T>(
     const nextSnapshot = selector(todoStore.getState());
     if (
       snapshotCache.current &&
-      (equalityFn?.(nextSnapshot, snapshotCache.current) || 
-        nextSnapshot === snapshotCache.current)
+      (equalityFn?.(nextSnapshot, snapshotCache.current) || nextSnapshot === snapshotCache.current)
     ) {
       return snapshotCache.current;
     }
@@ -67,11 +75,13 @@ export const useStore = <T>(
 };
 ```
 
-<div class="text-xl font-bold mt-4">
-~17 lines
-</div>
-
 <div v-click class="mt-8 text-2xl font-bold text-green-400">
 All that complexity? Gone! 🎉
 </div>
 
+<style>
+.slidev-code {
+  --slidev-code-font-size: 10.5px;
+  --slidev-code-line-height: 1.5;
+}
+</style>

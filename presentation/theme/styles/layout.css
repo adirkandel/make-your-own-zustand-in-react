@@ -28,8 +28,12 @@
     @apply opacity-40;
   }
 
+  img {
+    @apply inline-block;
+  }
+
   p {
-    @apply my-4 leading-6;
+    @apply my-2 leading-6;
   }
 
   h1 + p {
@@ -38,6 +42,11 @@
 
   p + h2, ul + h2, table + h2 {
     @apply mt-10;
+  }
+
+  ol {
+    list-style: decimal;
+    @apply mb-4;
   }
 
   ul {
@@ -124,4 +133,7 @@
   h1 {
     @apply text-6xl font-500 leading-20;
   }
+}
+.slidev-layout.two-columns {
+  @apply gap-5;
 }

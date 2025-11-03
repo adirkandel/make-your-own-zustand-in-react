@@ -4,36 +4,36 @@ layout: default
 
 # The Universal Store Pattern
 
-<div class="text-left mt-8">
-
-## What We Learned
+<div class="mt-6 flex gap-5">
 
 <div v-click>
 
+## What We Learned
+
 The **store pattern** is universal and works everywhere:
 
-</div>
-
-<div v-click class="mt-6">
+<div class="mt-6">
 
 ```typescript
-// 1. Create store with getState, setState, subscribe
+// Create store with getState, setState, subscribe
 const store = createStore(initialState);
 
-// 2. Connect to React
+// Connect to React
 const useStore = (selector) => {
   return useSyncExternalStore(
     store.subscribe,
     () => selector(store.getState())
   );
 };
-
-// 3. Done! ✅
 ```
 
 </div>
 
-<div v-click class="mt-8">
+</div>
+
+<div>
+
+<div v-click>
 
 ## This Pattern Powers
 
@@ -47,6 +47,8 @@ const useStore = (selector) => {
 <div v-click class="mt-8 text-xl font-bold">
 
 The store pattern is universal - React integration is what changed!
+
+</div>
 
 </div>
 

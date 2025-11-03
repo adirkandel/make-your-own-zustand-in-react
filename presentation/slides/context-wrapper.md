@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: default-new
 ---
 
 # Wrapping with Context
@@ -32,7 +32,7 @@ export function TodoProvider({ children }: { children: ReactNode }) {
 
 <div v-click class="mt-6">
 
-## Key Point
+## Key Point 💡
 
 Context is just the **pipe** to get the store - the store lives outside React!
 
