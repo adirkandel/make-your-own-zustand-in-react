@@ -86,20 +86,6 @@
   min-width: 450px;
 }
 
-.code-block {
-  background-color: #f5f5f5;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  font-family: monospace;
-  white-space: pre-wrap;
-  overflow-x: auto;
-}
-
-.todo-list {
-  margin-top: 20px;
-}
-
 .todo-item {
   display: flex;
   align-items: center;

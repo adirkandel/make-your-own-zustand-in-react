@@ -1,31 +1,53 @@
-import { useRef, useEffect, ReactNode } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
-import { Badge } from './ui/badge';
+import { useRef, ReactNode, useEffect } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { cn } from "../lib/utils";
 
 interface RenderCounterProps {
   componentName: string;
   children?: ReactNode;
+  orientation?: "horizontal" | "vertical";
 }
 
-const RenderCounter = ({ componentName, children }: RenderCounterProps) => {
+const RenderCounter = ({
+  componentName,
+  children,
+  orientation = "vertical",
+}: RenderCounterProps) => {
   const renderCount = useRef(0);
-  
+  const cardRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    let timeout: number;
+    if (renderCount.current > 1) {
+      cardRef.current?.classList.add("ring-red-300", "ring-3");
+      timeout = setTimeout(() => cardRef.current?.classList.remove("ring-red-600", "ring-3"), 500) as unknown as number;
+    }
     renderCount.current += 1;
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
   });
 
   return (
-    <div className="relative mb-6">
-      <Badge 
-        className="absolute top-0 right-0 z-10 h-6 w-6 flex items-center justify-center rounded-full bg-red-500 text-white font-bold"
+    <div className="mb-6 w-full">
+      <Card
+        ref={cardRef}
+        className={cn("p-0 flex w-full gap-0 border-2 duration-1000 border-dashed border-gray-200", {
+          "flex flex-row items-center": orientation === "horizontal",
+        })}
       >
-        {renderCount.current}
-      </Badge>
-      <Card className="border-2 border-dashed border-gray-200">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-lg">{componentName}</CardTitle>
+        <CardHeader className="pb-2 p-4 shrink-0">
+          <CardTitle className="text-lg flex items-center gap-2">
+            <Badge className="h-6 w-6 flex items-center justify-center rounded-full bg-red-500 text-white font-bold">
+              {renderCount.current}
+            </Badge>
+            {componentName}
+          </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className={cn("p-4", { "pt-0": orientation === "vertical" })}>
           {children}
         </CardContent>
       </Card>
